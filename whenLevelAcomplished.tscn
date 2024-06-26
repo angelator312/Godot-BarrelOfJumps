@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsx2txwf17drm"]
+
+[ext_resource type="PackedScene" uid="uid://2brlt1tykqt0" path="res://go_to_main.tscn" id="2_j43ue"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_64h74"]
+device = -1
+keycode = 72
+unicode = 104
+
+[sub_resource type="Shortcut" id="Shortcut_wdcab"]
+events = [SubResource("InputEventKey_64h74")]
+
+[node name="Node2D" type="VBoxContainer"]
+z_index = 1
+offset_right = 303.0
+offset_bottom = 172.0
+scale = Vector2(3, 3)
+alignment = 1
+
+[node name="YouWon" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 33
+text = "You Won The Level"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="GoToMain" parent="HBoxContainer" instance=ExtResource("2_j43ue")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_wdcab")
+metadata/_edit_use_anchors_ = true

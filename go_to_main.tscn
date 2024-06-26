@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://2brlt1tykqt0"]
+
+[ext_resource type="Texture2D" uid="uid://q1is7ugp3oor" path="res://buttons/home_normal.tres" id="1_7n3fb"]
+[ext_resource type="Script" path="res://GoToMain.gd" id="2_l6bu0"]
+[ext_resource type="Texture2D" uid="uid://dsmjmfuyjafjh" path="res://buttons/home_hover.tres" id="2_tqy1g"]
+
+[node name="GoToMain" type="TextureButton"]
+anchors_preset = -1
+anchor_right = 0.028
+anchor_bottom = 0.049
+offset_right = -0.256001
+offset_bottom = 0.247999
+texture_normal = ExtResource("1_7n3fb")
+texture_pressed = ExtResource("2_tqy1g")
+texture_hover = ExtResource("2_tqy1g")
+script = ExtResource("2_l6bu0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

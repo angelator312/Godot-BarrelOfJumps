@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://w8wdcegc0xal"]
+
+[ext_resource type="Script" path="res://RigidBody2D.gd" id="1_0extw"]
+[ext_resource type="Texture2D" uid="uid://i3h356ow8o0f" path="res://max.png" id="2_u36yb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb0pd"]
+radius = 23.0217
+
+[node name="Barrel" type="RigidBody2D"]
+position = Vector2(1088, 32)
+gravity_scale = 0.0
+script = ExtResource("1_0extw")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_sb0pd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.172857, 0.172857)
+texture = ExtResource("2_u36yb")

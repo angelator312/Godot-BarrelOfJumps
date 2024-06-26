@@ -1,0 +1,127 @@
+[gd_scene load_steps=28 format=3 uid="uid://ckuxd7hcnug38"]
+
+[ext_resource type="Script" path="res://mainScene.gd" id="1_0yg5a"]
+[ext_resource type="PackedScene" uid="uid://ceehakkoc8y08" path="res://LevelX.tscn" id="1_biyaw"]
+[ext_resource type="Script" path="res://GoToShop.gd" id="2_r72jc"]
+[ext_resource type="Texture2D" uid="uid://cu3b4kkr6pl1d" path="res://buttons/1_pressed.tres" id="3_gd8si"]
+[ext_resource type="Texture2D" uid="uid://okhka4ctqiss" path="res://buttons/1_normal.tres" id="4_qj07v"]
+[ext_resource type="Texture2D" uid="uid://beh8pxxtni31d" path="res://buttons/2_hovered.tres" id="5_hrgth"]
+[ext_resource type="Texture2D" uid="uid://byky4w4deea02" path="res://buttons/1_hovered.tres" id="5_mhav3"]
+[ext_resource type="Texture2D" uid="uid://be1a23y2o47wd" path="res://buttons/2_normal.tres" id="6_ximek"]
+[ext_resource type="Texture2D" uid="uid://dev3e2pijfys0" path="res://buttons/2_pressed.tres" id="7_kw7a5"]
+[ext_resource type="Script" path="res://GoToLevel2.gd" id="9_hj1nl"]
+[ext_resource type="Texture2D" uid="uid://cn76gs7yuoc8g" path="res://buttons/shop_normal.tres" id="10_1tgoc"]
+[ext_resource type="Texture2D" uid="uid://bm3ohjqbd1b6a" path="res://buttons/3_normal.tres" id="11_21erg"]
+[ext_resource type="Script" path="res://Quit.gd" id="11_c6h1b"]
+[ext_resource type="Texture2D" uid="uid://cejwp1xv38djx" path="res://buttons/shop_pressed.tres" id="11_pqlxf"]
+[ext_resource type="Shortcut" uid="uid://bjvvm5nvfqt14" path="res://escapeShortcut.tres" id="11_x1a5g"]
+[ext_resource type="PackedScene" uid="uid://um6wtdokorov" path="res://top_bar.tscn" id="12_0xjbr"]
+[ext_resource type="Texture2D" uid="uid://dw63lvcl2susx" path="res://buttons/shop_hover.tres" id="12_m8chj"]
+[ext_resource type="Texture2D" uid="uid://lv02u8iktnfo" path="res://buttons/3_pressed.tres" id="12_qd62d"]
+[ext_resource type="Texture2D" uid="uid://dj4a1v3cnmttb" path="res://buttons/3_hovered.tres" id="13_yifxs"]
+[ext_resource type="Texture2D" uid="uid://c7dt0e6gf71ay" path="res://buttons/4_normal.tres" id="17_r1boh"]
+[ext_resource type="Texture2D" uid="uid://b2veya3l0igkf" path="res://buttons/4_pressed.tres" id="18_5cn62"]
+[ext_resource type="Texture2D" uid="uid://f8aq20d28t53" path="res://buttons/4_hover.tres" id="19_6ejgt"]
+[ext_resource type="Texture2D" uid="uid://cstoqbjkfgd7t" path="res://buttons/5_normal.tres" id="20_38fch"]
+[ext_resource type="Texture2D" uid="uid://bwj818gtxpi1r" path="res://buttons/5_pressed.tres" id="21_raet7"]
+[ext_resource type="Texture2D" uid="uid://bhvq7k3u1kyq8" path="res://buttons/5_hovered.tres" id="22_tmru1"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_5m2h2"]
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_gxyj4"]
+events = [SubResource("InputEventKey_5m2h2")]
+
+[node name="Scena" type="Node2D"]
+script = ExtResource("1_0yg5a")
+
+[node name="Level1" parent="." instance=ExtResource("1_biyaw")]
+offset_left = 226.0
+offset_top = 269.0
+offset_right = 258.0
+offset_bottom = 302.0
+scale = Vector2(3, 3)
+shortcut = SubResource("Shortcut_gxyj4")
+texture_normal = ExtResource("4_qj07v")
+texture_pressed = ExtResource("3_gd8si")
+texture_hover = ExtResource("5_mhav3")
+
+[node name="Level2" parent="." instance=ExtResource("1_biyaw")]
+offset_left = 364.0
+offset_top = 267.0
+offset_right = 396.0
+offset_bottom = 299.0
+scale = Vector2(3, 3)
+shortcut = SubResource("Shortcut_gxyj4")
+texture_normal = ExtResource("6_ximek")
+texture_pressed = ExtResource("7_kw7a5")
+texture_hover = ExtResource("5_hrgth")
+script = ExtResource("9_hj1nl")
+
+[node name="GoToShop" type="TextureButton" parent="."]
+offset_left = 64.0
+offset_top = 528.0
+offset_right = 97.0
+offset_bottom = 560.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("10_1tgoc")
+texture_pressed = ExtResource("11_pqlxf")
+texture_hover = ExtResource("12_m8chj")
+script = ExtResource("2_r72jc")
+
+[node name="Level3" parent="." instance=ExtResource("1_biyaw")]
+offset_left = 501.0
+offset_top = 266.0
+offset_right = 533.0
+offset_bottom = 298.0
+scale = Vector2(3, 3)
+shortcut = SubResource("Shortcut_gxyj4")
+texture_normal = ExtResource("11_21erg")
+texture_pressed = ExtResource("12_qd62d")
+texture_hover = ExtResource("13_yifxs")
+script = null
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 920.0
+offset_top = 528.0
+offset_right = 1012.0
+offset_bottom = 559.0
+scale = Vector2(2, 2)
+shortcut = ExtResource("11_x1a5g")
+text = "Quit"
+script = ExtResource("11_c6h1b")
+
+[node name="TopBar" parent="." instance=ExtResource("12_0xjbr")]
+offset_right = 574.0
+offset_bottom = 28.0
+scale = Vector2(2, 2)
+
+[node name="Level4" parent="." instance=ExtResource("1_biyaw")]
+offset_left = 636.0
+offset_top = 264.0
+offset_right = 668.0
+offset_bottom = 296.0
+scale = Vector2(3, 3)
+shortcut = SubResource("Shortcut_gxyj4")
+texture_normal = ExtResource("17_r1boh")
+texture_pressed = ExtResource("18_5cn62")
+texture_hover = ExtResource("19_6ejgt")
+script = null
+
+[node name="Level5" parent="." instance=ExtResource("1_biyaw")]
+offset_left = 776.0
+offset_top = 264.0
+offset_right = 808.0
+offset_bottom = 296.0
+scale = Vector2(3, 3)
+shortcut = SubResource("Shortcut_gxyj4")
+texture_normal = ExtResource("20_38fch")
+texture_pressed = ExtResource("21_raet7")
+texture_hover = ExtResource("22_tmru1")
+script = null
+
+[connection signal="pressed" from="GoToShop" to="GoToShop" method="_on_pressed"]
+[connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[connection signal="pressed" from="Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="Level5" to="." method="_on_level_5_pressed"]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://ba5n2bt61dhws"]
+
+[ext_resource type="PackedScene" uid="uid://cdf28kgdrsdj2" path="res://restart.tscn" id="1_omkg7"]
+[ext_resource type="PackedScene" uid="uid://2brlt1tykqt0" path="res://go_to_main.tscn" id="2_bk035"]
+[ext_resource type="Texture2D" uid="uid://cn76gs7yuoc8g" path="res://buttons/shop_normal.tres" id="3_56cq3"]
+[ext_resource type="Texture2D" uid="uid://cejwp1xv38djx" path="res://buttons/shop_pressed.tres" id="4_d35jr"]
+[ext_resource type="Texture2D" uid="uid://dw63lvcl2susx" path="res://buttons/shop_hover.tres" id="5_ir1ma"]
+[ext_resource type="Script" path="res://GoToShop.gd" id="6_n2yeq"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_2yxti"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_ywt0v"]
+events = [SubResource("InputEventKey_2yxti")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6pa2c"]
+device = -1
+keycode = 72
+unicode = 104
+
+[sub_resource type="Shortcut" id="Shortcut_qy6vn"]
+events = [SubResource("InputEventKey_6pa2c")]
+
+[node name="Node2D" type="VBoxContainer"]
+z_index = 1
+offset_right = 200.0
+offset_bottom = 152.0
+scale = Vector2(3, 3)
+alignment = 1
+
+[node name="GameOver" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 33
+text = "You Died"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Restart" parent="HBoxContainer" instance=ExtResource("1_omkg7")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_ywt0v")
+metadata/_edit_use_anchors_ = true
+
+[node name="GoToMain" parent="HBoxContainer" instance=ExtResource("2_bk035")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_qy6vn")
+metadata/_edit_use_anchors_ = true
+
+[node name="GoToShop" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_56cq3")
+texture_pressed = ExtResource("4_d35jr")
+texture_hover = ExtResource("5_ir1ma")
+script = ExtResource("6_n2yeq")
+
+[connection signal="pressed" from="HBoxContainer/GoToShop" to="HBoxContainer/GoToShop" method="_on_pressed"]

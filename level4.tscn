@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://dir3q8w2pj2u4"]
+
+[ext_resource type="Script" path="res://Wall-Level4.gd" id="1_aa0ph"]
+[ext_resource type="Texture2D" uid="uid://cv5tce3plp572" path="res://brown.jpg" id="1_ihjad"]
+[ext_resource type="Script" path="res://Stoper-Level4.gd" id="4_jrxr0"]
+[ext_resource type="PackedScene" uid="uid://um6wtdokorov" path="res://top_bar.tscn" id="8_a8dhg"]
+[ext_resource type="PackedScene" uid="uid://dsx2txwf17drm" path="res://whenLevelAcomplished.tscn" id="8_fw606"]
+[ext_resource type="PackedScene" uid="uid://ba5n2bt61dhws" path="res://whenGameOver.tscn" id="9_g165r"]
+[ext_resource type="PackedScene" uid="uid://wmnvts1gts6r" path="res://player.tscn" id="9_s6ior"]
+[ext_resource type="PackedScene" uid="uid://w8wdcegc0xal" path="res://barrel.tscn" id="10_di6it"]
+[ext_resource type="PackedScene" uid="uid://t48em35debn" path="res://Coin.tscn" id="11_5hcu6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa75a"]
+size = Vector2(457, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhyxl"]
+size = Vector2(189.25, 1745.21)
+
+[node name="Scena" type="Node2D"]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(608, 281)
+script = ExtResource("1_aa0ph")
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Wall"]
+texture_repeat = 2
+position = Vector2(-231.76, -7.45454)
+scale = Vector2(1.02998, 0.977273)
+texture = ExtResource("1_ihjad")
+polygon = PackedVector2Array(-37.1268, -23.0698, 490.069, -22.0465, 432.786, 82.3256, 28.894, 80.2791)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_qa75a")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[node name="Coin2" parent="." instance=ExtResource("11_5hcu6")]
+position = Vector2(1224, -45)
+
+[node name="Barrel2" parent="." instance=ExtResource("10_di6it")]
+position = Vector2(1155, -47)
+
+[node name="Stoper" type="Area2D" parent="."]
+script = ExtResource("4_jrxr0")
+
+[node name="StoperShape" type="CollisionShape2D" parent="Stoper"]
+position = Vector2(567.479, 764.475)
+rotation = 1.57249
+shape = SubResource("RectangleShape2D_uhyxl")
+
+[node name="Player2" parent="." instance=ExtResource("9_s6ior")]
+position = Vector2(602, 180)
+
+[node name="GameOver" parent="." instance=ExtResource("9_g165r")]
+visible = false
+offset_left = 265.0
+offset_top = 192.0
+offset_right = 411.0
+offset_bottom = 274.0
+
+[node name="LevelWon" parent="." instance=ExtResource("8_fw606")]
+visible = false
+offset_left = 97.0
+offset_top = 140.0
+offset_right = 413.0
+offset_bottom = 222.0
+
+[node name="TopBar" parent="." instance=ExtResource("8_a8dhg")]
+offset_right = 1153.0
+offset_bottom = 34.0
+
+[node name="Pusk" type="StaticBody2D" parent="."]
+position = Vector2(-152, 579)
+
+[node name="Pusk2" type="StaticBody2D" parent="."]
+position = Vector2(-152, 406)
+
+[node name="Pusk6" type="StaticBody2D" parent="."]
+position = Vector2(-152, 230)
+
+[node name="Pusk3" type="StaticBody2D" parent="."]
+position = Vector2(1200, 483)
+
+[node name="Pusk4" type="StaticBody2D" parent="."]
+position = Vector2(1200, 310)
+
+[node name="Pusk5" type="StaticBody2D" parent="."]
+position = Vector2(1200, 134)
+
+[connection signal="timeout" from="Timer" to="Stoper" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Stoper" to="Stoper" method="_on_body_entered"]

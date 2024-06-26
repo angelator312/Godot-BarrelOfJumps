@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://rjt5m1djsohe"]
+
+[ext_resource type="Texture2D" uid="uid://cv5tce3plp572" path="res://brown.jpg" id="1_cs1kj"]
+[ext_resource type="PackedScene" uid="uid://t48em35debn" path="res://Coin.tscn" id="2_u8nkc"]
+[ext_resource type="PackedScene" uid="uid://w8wdcegc0xal" path="res://barrel.tscn" id="3_axkib"]
+[ext_resource type="Script" path="res://Stoper-Level2.gd" id="4_sguif"]
+[ext_resource type="PackedScene" uid="uid://wmnvts1gts6r" path="res://player.tscn" id="5_8p5tu"]
+[ext_resource type="PackedScene" uid="uid://ba5n2bt61dhws" path="res://whenGameOver.tscn" id="7_wdbdp"]
+[ext_resource type="PackedScene" uid="uid://dsx2txwf17drm" path="res://whenLevelAcomplished.tscn" id="8_5boam"]
+[ext_resource type="PackedScene" uid="uid://um6wtdokorov" path="res://top_bar.tscn" id="8_nvbwp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhyxl"]
+size = Vector2(94.5, 225)
+
+[node name="Scena" type="Node2D"]
+
+[node name="Pusk2" type="StaticBody2D" parent="."]
+position = Vector2(55, -47)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+visibility_layer = 0
+build_mode = 1
+polygon = PackedVector2Array(553, 618, 778, 579, 878.657, 575.272, 947, 562, 1016, 508, 1054, 446, 1093, 301, 1111, 165, 1131, 75, 1146, 13, 1152, 644, 527, 646)
+
+[node name="Polygon2D" type="Polygon2D" parent="Wall"]
+texture_repeat = 2
+texture = ExtResource("1_cs1kj")
+polygon = PackedVector2Array(387, 608, 449, 651, -45, 653, -3, -53, 46, 209, 86, 370, 126, 503, 156, 541, 203, 575)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Wall"]
+texture_repeat = 2
+texture = ExtResource("1_cs1kj")
+polygon = PackedVector2Array(553, 618, 778, 579, 878.657, 575.272, 947, 562, 1016, 508, 1054, 446, 1093, 301, 1111, 165, 1131, 75, 1163, -23, 1199, 661, 525, 649)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Wall"]
+visibility_layer = 0
+build_mode = 1
+polygon = PackedVector2Array(387, 608, 445, 644, 2, 644, 3, 13, 46, 209, 86, 370, 126, 503, 156, 541, 203, 575)
+
+[node name="Pusk" type="StaticBody2D" parent="."]
+position = Vector2(1094, -49)
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[node name="Coin2" parent="." instance=ExtResource("2_u8nkc")]
+position = Vector2(1224, -45)
+
+[node name="Barrel2" parent="." instance=ExtResource("3_axkib")]
+position = Vector2(1155, -47)
+
+[node name="Stoper" type="Area2D" parent="."]
+position = Vector2(486, 773)
+script = ExtResource("4_sguif")
+metadata/_edit_group_ = true
+
+[node name="StoperShape" type="CollisionShape2D" parent="Stoper"]
+shape = SubResource("RectangleShape2D_uhyxl")
+
+[node name="Player2" parent="." instance=ExtResource("5_8p5tu")]
+position = Vector2(581, 548)
+
+[node name="GameOver" parent="." instance=ExtResource("7_wdbdp")]
+visible = false
+offset_left = 265.0
+offset_top = 192.0
+offset_right = 410.0
+offset_bottom = 284.0
+
+[node name="LevelWon" parent="." instance=ExtResource("8_5boam")]
+visible = false
+offset_left = 97.0
+offset_top = 140.0
+offset_right = 420.0
+offset_bottom = 249.0
+
+[node name="TopBar" parent="." instance=ExtResource("8_nvbwp")]
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1143.0
+offset_bottom = 34.0
+
+[connection signal="timeout" from="Timer" to="Stoper" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Stoper" to="Stoper" method="_on_body_entered"]

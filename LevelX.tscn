@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceehakkoc8y08"]
+
+[ext_resource type="Texture2D" uid="uid://dev3e2pijfys0" path="res://buttons/2_pressed.tres" id="1_akfbs"]
+[ext_resource type="Script" path="res://Levels.gd" id="1_pofla"]
+
+[node name="LevelX" type="TextureButton"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 40.0
+offset_bottom = 38.0
+texture_normal = ExtResource("1_akfbs")
+script = ExtResource("1_pofla")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

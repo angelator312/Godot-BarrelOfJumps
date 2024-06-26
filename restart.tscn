@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdf28kgdrsdj2"]
+
+[ext_resource type="Texture2D" uid="uid://bsrld7tkk1uul" path="res://buttons/reset_normal.tres" id="1_75vur"]
+[ext_resource type="Script" path="res://Restart.gd" id="2_ouvmw"]
+[ext_resource type="Texture2D" uid="uid://bfknnr5brstrr" path="res://buttons/reset_hover.tres" id="2_qifi2"]
+
+[node name="Restart" type="TextureButton"]
+anchors_preset = -1
+anchor_right = 0.029
+anchor_bottom = 0.049
+offset_top = -1.0
+offset_right = -0.408001
+offset_bottom = 0.247999
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_75vur")
+texture_pressed = ExtResource("1_75vur")
+texture_hover = ExtResource("2_qifi2")
+script = ExtResource("2_ouvmw")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
