@@ -35,6 +35,9 @@ var levelWon=false
 var boss = false
 #var bosses=0
 
+func _ready():
+	load_game()
+
 func addScore(amount):
 	score+=amount
 
@@ -66,5 +69,33 @@ func closeLevel(level):
 	
 func setBoss(state):
 	boss=state
+	
 func  setLevelWon(flag):
 	levelWon=flag
+	self.save_game()
+
+
+func save_game():
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	# JSON provides a static method to serialized JSON string.
+	var json_string = JSON.stringify({
+		"notLuckForCoins": notLuckForCoins,
+		"luckForBoss": luckForBoss,
+		"luck": luck,
+		"score": score,
+		"scoreMultiplier": scoreMultiplier,
+	})
+	# Store the save dictionary as a new line in the save file.
+	save_game.store_line(json_string)
+
+func load_game():
+	if !FileAccess.file_exists("user://savegame.save"):
+		return 
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	var line = save_game.get_line()
+	var saved_data : Dictionary = JSON.parse_string(line)
+	notLuckForCoins = saved_data.get("notLuckForCoins", 0)
+	luckForBoss = saved_data.get("luckForBoss", 0)
+	luck = saved_data.get("luck", 0)
+	score = saved_data.get("score", 0)
+	scoreMultiplier = saved_data.get("scoreMultiplier", 0)
