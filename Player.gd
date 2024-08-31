@@ -100,7 +100,7 @@ func _physics_process(delta):
 						print(collider.health)
 						print(attackBr)
 						collider.hited(attackBr)
-						collider.apply_impulse(Vector2(1000, 0))
+						collider.apply_impulse(Vector2(100, 10))
 					#else:
 						#print(1)
 					#if(collider.get_parent()):
@@ -127,3 +127,5 @@ func _on_animated_player_animation_looped():
 		PlayerVariables.timeForSword=PlayerVariables.defaultTimeToSword
 		#print(timeForSword)
 	pass # Replace with function body.
+	
+	

@@ -101,7 +101,6 @@ position = Vector2(566, 524)
 
 [node name="GameOver" parent="." instance=ExtResource("7_3bph3")]
 visible = false
-z_index = 1
 offset_left = 265.0
 offset_top = 192.0
 offset_right = 410.0
@@ -109,7 +108,6 @@ offset_bottom = 284.0
 
 [node name="LevelWon" parent="." instance=ExtResource("8_kr814")]
 visible = false
-z_index = 1
 offset_left = 97.0
 offset_top = 140.0
 offset_right = 420.0
